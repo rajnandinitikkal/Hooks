@@ -1,25 +1,17 @@
 .app-title{
     color: black;
     text-align: center;
-    color: rgb(231, 144, 31);
 }
 body{
     background-color: rgb(236, 224, 206);
 }
-/* .contact-container{
-   text-align: center;
-} */
 .app-body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     
 }
-/* .add-contact-container{
-    background-color: white;
-    height: 500px;
-    width: 400px;
-} */
+
 .sub-heading{
     text-align: center;
 }
@@ -44,3 +36,105 @@ body{
     cursor: pointer;
 
 }
+
+.main-container{
+    margin: auto;
+    width: 450px;
+    height: auto;
+    background-color: rgb(213, 211, 211);
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 30px;
+}
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#text{
+    margin: 5px;
+    padding-left: 8px;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 420px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#password{
+    margin: 5px;
+    padding-left: 8px;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 420px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+#pass{
+    padding-left: 8px;
+}
+#name{
+    padding-left: 8px;
+}
+#submitbtn{
+    margin-left: 70px;
+    border: none;
+    border-radius: 7px;
+    height: auto;
+    width: 300px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+   padding: 8px 0;
+    
+}
+.forgotpass{
+    padding-left: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+
+}
+a{
+    text-decoration: none;
+}
+#register{
+    padding-left: 8px;
+    margin-top: 50px;
+}
+
+.box1{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#name1{
+    padding-left: 8px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+
+}
+#name2{
+    padding-left: 8px;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+}
+#head1{
+    padding-left: 8px;
+}
+#head2{
+    padding-left: 8px;
+}
+

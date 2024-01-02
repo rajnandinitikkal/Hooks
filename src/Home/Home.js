@@ -1,189 +1,189 @@
-import React,{useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
-import ContactCard from '../../Component/ContactCard/ContactCard';
 import showToast from 'crunchy-toast';
+import SignUp from '../Loginpage/SignUp'
 
 export default function Home() {
-     
-    const [contacts , setContacts] = useState([
+
+    const [login, setLogin] = useState([
         {
-            name:'Rutuja Gaikwad',
-        mobile: '9158569290',
-        email:'gaikwadrutu@gmail.com'
-        },
-        {
-            name:'Sakshi Bodakhe',
-            mobile: '9023601272',
-            email:'sakshi83@gmail.com'
-        },
-        {
-            name:'Swara Gaikwad',
-            mobile: '9122608934',
-            email:'gaikwadswara@gmail.com'
-        },
+            name: 'Rutuja Tikkal',
+            mobile: '9158569290',
+            email: 'rutu@gmail.com'
+        }
     ]);
-    const [name , setName] = useState('')
-    const [email , setEmail] = useState('')
-    const [mobile , setMobile] = useState('')
-    const [editIndex , setEditIndex] = useState('-1')
-    const [isEditMode , setIsEditMode] = useState(false)
-    
-    const addContacts = () => {
-    
-    if(!name){
-        showToast('Please enter name','error',3000)
-        return;
-    }
-    if(!email){
-        showToast('please enter email','error',3000)
-        return;
-    }
-    if(!mobile){
-        showToast('Please enter mobile number','error',3000)
-        return;
-    }   
-       const obj = {
-        name: name,
-        email:email,
-        mobile: mobile
-       }
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [mobile, setMobile] = useState('')
+    const [editIndex, setEditIndex] = useState('-1')
+    const [isEditMode, setIsEditMode] = useState(false)
 
-       const newContacts = [...contacts,obj];
-       setContacts([newContacts]);
-       saveToLocalStorage(newContacts);
+    const userDetails = () => {
 
-       showToast('Contact Added Sucessfully','success',3000)
+        if (!name) {
+            showToast('Please enter name', 'error', 3000)
+            return;
+        }
+        if (!email) {
+            showToast('please enter email', 'error', 3000)
+            return;
+        }
+        if (!mobile) {
+            showToast('Please enter mobile number', 'error', 3000)
+            return;
+        }
+        const obj = {
+            name: name,
+            email: email,
+            mobile: mobile
+        }
 
-       setName('');
-       setEmail('');
-       setMobile('');
+        const newContacts = [...login, obj];
+        setLogin([newContacts]);
+        saveToLocalStorage(newContacts);
+
+        showToast('User Login Sucessfully', 'success', 3000)
+
+        setName('');
+        setEmail('');
+        setMobile('');
     };
-
-    const deleteContact = (mobileNumber)=>{
-        let indexToDelete = -1;
-
-        contacts.forEach((contactDetail,index) =>{
-            if(contactDetail.mobile === mobileNumber){
-                indexToDelete = index;
-            }
-        })
-
-        contacts.splice(indexToDelete,1);
-
-        saveToLocalStorage(contacts);
-
-        setContacts([...contacts])
-
-        showToast('Contact Deleted Sucessfully','success',3000)
-    }
-
-    const saveToLocalStorage = (contactsData) => {
-        localStorage.setItem('contacts',JSON.stringify(contactsData))
-    }
-
-    const loadFromLocalStorage = () =>{
-        const contactsData = JSON.parse(localStorage.getItem('contacts'));
-
-        if(contactsData){
-            setContacts(contactsData);
+    const editlogin = () => {
+        const obj = {
+            name: name,
+            email: email,
+            mobile: mobile
         }
+
+        login[editIndex] = obj;
+
+        setLogin([...login]);
+
+        saveToLocalStorage(login);
+
+        showToast('Contact edited successfully', 'success', 3000)
+
+        setName('');
+        setEmail('');
+        setMobile('');
+
+        setIsEditMode(false);
     }
-
-    const enableEditMode = (index)=>{
-       const contactsData = contacts[index];
-
-       setName(contactsData.name);
-       setEmail(contactsData.email);
-       setMobile(contactsData.mobile);
-
-       setEditIndex(index);
-       setIsEditMode(true);
-    }
-
-    const editContact = ()=>{
-       const obj = {
-        name : name,
-        email : email,
-        mobile : mobile
-       }
-
-       contacts[editIndex] = obj;
-        
-       setContacts([...contacts]);
-
-       saveToLocalStorage(contacts);
-
-       showToast('Contact edited successfully','success',3000)
-
-       setName('');
-       setEmail('');
-       setMobile('');
-
-       setIsEditMode(false);
-    }
-
-    useEffect(()=>{
+    useEffect(() => {
         loadFromLocalStorage()
-    })
-  return (
-   <>
-   <h1 className='app-title'>📞Contact App</h1>
+    });
 
-   <div className='app-body'>
-
-    <div className='contact-container'>
-    <h2 className='sub-heading'>Show contacts</h2>
-    {
-        contacts.map((contacts,index)=>{
-           return(
-            <>
-            <ContactCard key={index} 
-            name={contacts.name} 
-            mobile={contacts.mobile} 
-            email={contacts.email}
-            deleteContact={deleteContact}
-            enableEditMode={enableEditMode}
-            index={index}/>
-            </>
-           )
-        })
+    const saveToLocalStorage = (Data) => {
+        localStorage.setItem('login', JSON.stringify(Data))
     }
-    </div>
 
-    <div  className='add-contact-container'>
-    <h2 className='sub-heading'>
-        { isEditMode ? 'Edit Contact' : 'Add Contact'}</h2>
-    <form>
-        <input type="text" placeholder='name' className='user-input' 
-        onChange={(e)=>{
-            setName(e.target.value);
-        }}
-        value={name}
-        ></input>
+    const loadFromLocalStorage = () => {
+        const loginData = JSON.parse(localStorage.getItem('login'));
 
-        <input type="email" placeholder='Email' className='user-input' 
-         onChange={(e)=>{
-            setEmail(e.target.value);
-        }}
-        value={email}
-        ></input>
-
-        <input type="tel" placeholder='Contact' className='user-input' 
-         onChange={(e)=>{
-            setMobile(e.target.value);
-        }}
-        value={mobile}
-        ></input>
-
-        <button type="button" className='btn-add-contacts' onClick={()=>{
-            isEditMode ? editContact():addContacts()
+        if (loginData) {
+            setLogin(loginData);
         }
-        }> { isEditMode ? 'Edit Contact' : 'Add Contact'}</button>
-    </form>
-    </div>
-   </div>
-   
-   
-   </>
-  )
+    }
+
+    return (<>
+        <h1 className='app-title'>SignUp</h1>
+
+        <div className='app-body'>
+
+            <div className='contact-container'>
+                <h2 className='sub-heading'>Login Users</h2>
+                {
+                    login.map((contacts, index) => {
+                        return (
+                            <>
+                                <SignUp key={index}
+                                    name={contacts.name}
+                                    mobile={contacts.mobile}
+                                    email={contacts.email}
+                                    index={index} />
+                            </>
+                        )
+                    })
+                }
+            </div>
+            <div className='add-contact-container'>
+
+            
+
+                <div class="container">
+                    <div className='main-container'>
+                        <h1>Register</h1><hr />
+
+                        <div className='box1'>
+                            <div>
+                                <span id="head1">First Name:{name}</span><br></br>
+                                <input type="text" id="name1"  onChange={(e) => {
+                                setName(e.target.value);
+                            }}
+                            value={name}/>
+                            </div>
+
+                            <div>
+                                <span id="head2">Last Name:{name}</span><br></br>
+                                <input type="text" id="name1" onChange={(e) => {
+                                setName(e.target.value);
+                            }}
+                            value={name}/></div>
+                        </div>
+
+                        <span id="name">Email :{email} </span>
+                        <br></br>
+                        <input type="email"  required id="text"   onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                            value={email}/>
+
+                        <br></br><br></br>
+
+                        <span id="name">Mobile No. :{mobile} </span>
+                        <br></br>
+                        <input type="tel" required id="text"   onChange={(e) => {
+                                setMobile(e.target.value);
+                            }}
+                            value={mobile}/>
+
+                        <br></br><br></br>
+
+                        <div className='box1'>
+                            <div>
+                                <span id="head1">Password</span><br></br>
+                                <input type="password" id="name1" />
+                            </div>
+                            <div><span id="head2">Confirm Passsword</span><br></br>
+                                <input type="password" id="name1" /></div>
+                        </div>
+
+                        <br></br>
+                        <button type="submit" id="submitbtn" onClick={() => {
+                            isEditMode ? editlogin() : userDetails()
+                        }
+                        }>login</button>
+                        <br></br><br></br>
+
+                        <span id="register">Already have an account? <a href='./LoginPage.js'>
+                            Login </a>
+                        </span>
+                    </div>
+
+
+
+                    <div></div>
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+
+    </>
+    )
 }

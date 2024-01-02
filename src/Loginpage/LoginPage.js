@@ -1,24 +1,46 @@
+
 import React from 'react';
-import './ContactCard.css';
+import './LoginPage.css';
 
-
-export default function ContactCard({name,mobile,email,deleteContact,index,enableEditMode}) {
+export default function LoginPage(
+  {name,password}
+) {
   return (
-    <div className='contact-card'>
-    <p className='contact-name '>Name : {name}</p>
-    <p className='contact-mobile '>Contact : {mobile}</p>
-    <p className='contact-email '>Email : {email}</p>
-    <span className='delete-btn'
-    onClick={() => {
-      deleteContact(mobile)
-    }}
-    >🗑️</span>
-     <span className='edit-btn'
-    onClick={() => {
-      enableEditMode(index)
-    }}
-    >🖋️</span>
-</div>
+    <div class="container">
+    <div className='main-container'>
+    <h1>Login Page</h1><hr/>
+
+    <span id="name">Email/Mobile :{name} </span>
+    <br></br>
+
+    <input type="text" autoComplete="off" value='rutuja@gmai.com' required id="text"/>
+    <br></br><br></br>
+
+   <span id="pass">Password :{password} </span>
+    <br></br>
+
+    <input type="password" 
+    autoComplete="off" placeholder='exce;r222' required id="password"/>
+    <br></br>
+
+    <a href="./SignUp.js">
+    <span className='forgotpass'>Forgot your password?</span>
+    </a>
+    <br></br>
+    <button type="submit" id="submitbtn">login</button>
+    <br></br><br></br>
+
+    <span id="register">Don't have an account? <a href='./SignUp.js'>
+    Sign Up </a>
+    </span>
+    </div>
+
+
+
+    <div></div>
+
+    </div>
   )
 }
+
 

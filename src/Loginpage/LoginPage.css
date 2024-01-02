@@ -1,42 +1,72 @@
-.contact-card{
-    background-color: #fff;
-    width: 400px;
-    padding: 5px 20px;
-    margin: 10px;
-    border-radius: 15px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
-    cursor: pointer;
-    position: relative;
+
+.main-container{
+    margin: auto;
+    width: 450px;
+    height: 350px;
+    background-color: rgb(213, 211, 211);
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 30px;
 }
-.delete-btn{
-    position: absolute;
-    bottom:5px;
-    right: 10px;
-    cursor: pointer;
-    box-shadow: 0 0 2px rgba(0,0,0,0.3);
-    padding: 2px;
-    border-radius: 50%;
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
-.edit-btn{
-    position: absolute;
-    bottom:5px;
-    right: 45px;
-    cursor: pointer;
-    box-shadow: 0 0 2px rgba(0,0,0,0.3);
-    padding: 2px;
-    border-radius: 50%;
-}
-m-4{
-    margin: 4px;
-}
-.contact-name{
-    font-size: 17px;
-    font-weight: bold;
+#text{
     margin: 5px;
+    padding-left: 8px;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 420px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
 }
-.contact-email{
+#password{
     margin: 5px;
+    padding-left: 8px;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 420px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
 }
-.contact-mobile{
-    margin: 5px;
+#pass{
+    padding-left: 8px;
+}
+#name{
+    padding-left: 8px;
+}
+#submitbtn{
+    margin-left: 70px;
+    border: none;
+    border-radius: 7px;
+    height: auto;
+    width: 300px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+   padding: 8px 0;
+    
+}
+.forgotpass{
+    padding-left: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+
+}
+a{
+    text-decoration: none;
+}
+#register{
+    padding-left: 8px;
+    margin-top: 50px;
 }

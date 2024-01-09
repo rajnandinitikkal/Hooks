@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import showToast from 'crunchy-toast';
-import SignUp from '../Loginpage/SignUp'
+import SignUp from '../Loginpage/SignUp';
+import { Link } from "react-router-dom";
 
 export default function Home() {
 
@@ -165,8 +166,8 @@ export default function Home() {
                         }>login</button>
                         <br></br><br></br>
 
-                        <span id="register">Already have an account? <a href='./LoginPage.js'>
-                            Login </a>
+                        <span id="register">Already have an account? <Link to='./LoginPage.js'>
+                            Login </Link>
                         </span>
                     </div>
 
